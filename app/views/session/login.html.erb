@@ -1,0 +1,18 @@
+<h1><%= t('login')%></h1>
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<%= form_tag({controller: "session", action: "login"}, method: "post", class: "nifty_form")%>
+
+<p>
+	<%= label_tag(:username, t('username')) %>
+	<%= text_field_tag(:username) %>
+</p>
+<p>
+	<%= label_tag(:passsword, t('pw')) %>
+	<%= password_field_tag(:password) %>
+</p>
+<%= submit_tag(t('login_submit')) %>
+
+<%= link_to t('registration'), controller: 'user', action: 'registration' %>

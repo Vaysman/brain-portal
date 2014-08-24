@@ -1,0 +1,29 @@
+<h1><%= t('registration')%></h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+<%= form_for @user, url: {action:'registration'} do |f| %>
+	<p>
+	<%= f.label(:username, t('username')) %>
+	<%= f.text_field :username %>
+	</p>
+	<p>
+	<%= f.label(:email, t('email')) %>
+	<%= f.email_field :email %>
+	</p>
+	<p>
+	<%= f.label(:password, t('pw')) %>
+	<%= f.password_field :password %>
+	</p>
+	<p>
+	<%= f.label(:password_confirmation, t('r_pw')) %>
+	<%= f.password_field :password_confirmation %>
+	</p>
+	<%= f.submit(t('register_submit'))%>
+<% end %>
