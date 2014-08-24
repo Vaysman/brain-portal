@@ -1,4 +1,22 @@
 ru:
+
+
+
+
+  #mailers
+  registration_mail_sub: 'Регистрация на brain-portal.com'
+  register_1_m: 'Вы подали заявку на регистрацию на нашем портале'
+  register_2_m: 'Логин - '
+
+
+
+
+
+
+
+
+
+  #end
   login: "Авторизация"
   username: "Логин"
   pw: "Пароль"
@@ -7,9 +25,10 @@ ru:
   r_pw: 'Повторите пароль'
   email: 'Эл. адресс'
   register_submit: 'Регистрация'
-  username_error: 'Только латинские цифры и буквы'
+  username_error: 'Только цифры и буквы'
   alert_registr: 'Зарегистрировались ? Так чего ждете ?'
   alert_fail_login: 'То ли логина нету, то ли пароль не тот'
+  
   activerecord:
 
     errors:
@@ -39,9 +58,13 @@ ru:
         odd: "может быть только нечетным"
         even: "может быть только четным"
         email_error: "не правильного формата"
+        pw_error: 'должен иметь только латинские цифры и буквы'
+        username_error: 'должен иметь только цифры и буквы'
     attributes:
       user:
         email: "Электронный адресс"
+        username: "Имя пользователя"
+        password: "Пароль"
 
 
 

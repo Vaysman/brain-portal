@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823132738) do
+ActiveRecord::Schema.define(version: 20140824050329) do
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "username"
-    t.string   "login"
     t.string   "password"
     t.string   "email"
     t.string   "activation_token"
@@ -32,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140823132738) do
     t.string   "about"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree

@@ -4,9 +4,6 @@ class UserController < ApplicationController
 			@user = User.new
 		else
 			@user = User.new(user_params)
-			@user.password = Base64.encode64(@user.password)
-			@user.password_confirmation = Base64.encode64(@user.password_confirmation)
-
 			if @user.save
 				flash[:notice] = I18n.t('alert_registr')
 				redirect_to url_for(:controller => :session, :action => :login)
