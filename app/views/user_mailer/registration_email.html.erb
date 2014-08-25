@@ -4,13 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= t('register_1_m')+%></h1>
+    <h1><%= t('register_1_m')%></h1>
     <p>
       <%= t('register_2_m') + @user.username %>.<br>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+       <%= t('register_3_m') 
+        link_to 'activation', "'brain-portal.com/user/token?code='+@user->activation_token" %>.
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p><%= t('register_4_m')%></p>
   </body>
 </html>

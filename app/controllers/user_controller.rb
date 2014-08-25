@@ -5,13 +5,34 @@ class UserController < ApplicationController
 		else
 			@user = User.new(user_params)
 			if @user.save
-				flash[:notice] = I18n.t('alert_registr')
+				UserMailer.registration_email(@user).deliver
 				redirect_to url_for(:controller => :session, :action => :login)
 			else
 				render 'registration'
 			end
 		end
 
+	end
+
+	def token
+		if params['code'].nil?
+			redirect_to url_for(:controller => :session, :action => :login)
+		else
+			@user = User.find_by(activation_token:(params['code']))
+			if @user.nil?
+				redirect_to url_for(:controller => :session, :action => :login)
+			else
+				@user.active = 1
+				@user.activation_token = nil
+				if @user.save
+					flash[:notice] = I18n.t('alert_registr')
+					redirect_to url_for(:controller => :session, :action => :login)
+				else
+					flash[:notice] = I18n.t('alert_registr_error')
+					redirect_to url_for(:controller => :session, :action => :login)
+				end
+			end
+		end	
 	end
 
 	private

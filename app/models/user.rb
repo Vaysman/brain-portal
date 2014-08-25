@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-	before_save :hash_password, :on => :create
-	before_save :token, :on => :create
+	before_create :hash_password, :on => :create
+	before_create :token
 	validates :email, :password, :username, presence: true
-	validates :password, length: { in: 6..14 }
+	validates :password, length: { in: 6..14 }, :on =>:create
 	validates :email,  :username, uniqueness: true
 	validates :password, confirmation: true
 	validates :email, email_format: { message: :email_error }
