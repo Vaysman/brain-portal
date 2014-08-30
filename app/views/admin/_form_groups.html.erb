@@ -1,0 +1,17 @@
+<% if @group.errors.any? %>
+  <div id="error_explanation">
+    
+    <% @group.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+ 
+<%= form_for @group, url: {action: @action_title} do |f| %>
+	<p>
+	<%= f.label(:title, t('group_title')) %>
+	<%= f.text_field :title %>
+	</p>
+	<%= f.submit(t('save_button'))%>
+<% end %>
