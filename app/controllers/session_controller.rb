@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
 	def login
-		if session[:user].nil?
+		if cookies[:auth_login].nil?
 
 			if params['login'].nil? && params['password'].nil?
 				
@@ -11,7 +11,11 @@ class SessionController < ApplicationController
 				else
 					if @user.active == true
 						if Digest::SHA1.hexdigest(params['password']) == @user.password
-							session[:user] = @user
+							if params[:remember]
+						      cookies[:auth_login] = { :value => @user.username, :expires => Time.now + 3600*24*30}
+						    else
+						      cookies[:auth_login] = @user.username
+						    end
 							redirect_to url_for(:controller => :user, :action => :profile)
 						else
 							flash[:notice] = I18n.t('alert_fail_login')
@@ -25,16 +29,12 @@ class SessionController < ApplicationController
 			redirect_to url_for(:controller => :user, :action => :profile)
 		end
 	end
-	
-
-	def profile
-	end
 
 	def logout
-		if session[:user].nil?
+		if cookies[:auth_login].nil?
 			redirect_to url_for(:controller => :session, :action => :login)
 		else
-			session[:user] = nil
+			cookies.delete(:auth_login)
 			redirect_to url_for(:controller => :session, :action => :login)
 		end
 	end

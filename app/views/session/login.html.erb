@@ -1,19 +1,31 @@
-<h1><%= t('login')%></h1>
+	<div id="page_align">
+			<div class="sep_top"></div>
+			<div class="sep_top1"></div>
+			<h1><%= t('login')%></h1>
 
-<% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
+			<% flash.each do |key, value| %>
+			    <div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
 
-<%= form_tag({controller: "session", action: "login"}, method: "post", class: "nifty_form")%>
+			<%= form_tag({controller: "session", action: "login"}, method: "post", class: "nifty_form") do %>
 
-<p>
-	<%= label_tag(:username, t('username')) %>
-	<%= text_field_tag(:username) %>
-</p>
-<p>
-	<%= label_tag(:passsword, t('pw')) %>
-	<%= password_field_tag(:password) %>
-</p>
-<%= submit_tag(t('login_submit')) %>
+			<p class="login_n"><b>
+				<%= label_tag(:username, t('username')) %>
+				</b>
+				<%= text_field_tag(:username) %>
+			</p>
+			<p class="login_n"><b>
+				<%= label_tag(:passsword, t('pw')) %>
+				</b>
+				<%= password_field_tag(:password) %>
+			</p>
 
-<%= link_to t('registration'), controller: 'user', action: 'registration' %>
+			<%= submit_tag(t('login_submit'),  class: "enter_link") %>
+			<%= link_to button_tag(t('registration'), class: "reg_link"), controller: 'user', action: 'registration' %>
+			<p class = "login_n">
+			<%= check_box_tag(:remember) %>
+			<%= label_tag(:remember, t('remember')) %>
+			</p>
+			<% end %>
+			<div class="sep_bottom"></div>
+	</div>
