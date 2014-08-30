@@ -52,6 +52,8 @@ class AdminController < ApplicationController
 	end
 
 	def groups_index
+		@groups = Group.all.paginate(page: params[:page], per_page: 10)
+		
 	end
 
 	private

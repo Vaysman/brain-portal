@@ -1,1 +1,14 @@
 <h1><%= t('group_index')%></h1>
+<table>
+  <tr>
+    <th><%= t('group_index_id')%></th>
+    <th><%= t('group_index_title')%></th>
+  </tr>
+<% @groups.each do |group| %>
+<tr>
+      <td><%= group.id %></td>
+      <td><%= group.title %></td>
+</tr>
+<% end %>
+</table>
+<%= will_paginate @groups %>

@@ -48,6 +48,8 @@ ru:
   save_button: 'Сохранить'
   group_title: 'Группа'
   group_index: 'Список групп'
+  group_index_title: 'Название'
+  group_index_id: 'ID'
   ##############################################################
   
 
