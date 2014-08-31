@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	before_create :hash_password, :on => :create
 	before_create :token
+	has_one :group
 	validates :email, :password, :username, presence: true
 	validates :password, length: { in: 6..14 }, :on =>:create
 	validates :email,  :username, uniqueness: true

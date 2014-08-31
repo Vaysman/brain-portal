@@ -13,5 +13,9 @@
 	<%= f.label(:title, t('group_title')) %>
 	<%= f.text_field :title %>
 	</p>
+  <p>
+  <%= f.label(:is_default, t('group_is_default')) %>
+  <%= f.check_box :is_default %>
+  </p>
 	<%= f.submit(t('save_button'))%>
 <% end %>
