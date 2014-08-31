@@ -4,6 +4,8 @@ class UserController < ApplicationController
 			@user = User.new
 		else
 			@user = User.new(user_params)
+			@def_group = Group.find_by is_default: true
+			@user.group_id = @def_group.id
 			if @user.save
 				UserMailer.registration_email(@user).deliver
 				redirect_to url_for(:controller => :session, :action => :login)
