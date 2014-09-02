@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   ##########################################
 
   #@ADMIN ROUTES############################
+  get '/crm' => 'admin#index'
   get 'crm/groups/' => 'admin#groups_index'
   get 'crm/groups/create' => 'admin#groups_create'
   post 'crm/groups/create' => 'admin#groups_create'
