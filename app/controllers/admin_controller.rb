@@ -1,6 +1,7 @@
 class AdminController < ApplicationController	
 
 	def index
+		raise  PagesActions.get_id_by_alias('delete').inspect
 	end
 
 	###################################GROUPS#####################################
