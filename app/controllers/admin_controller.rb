@@ -27,6 +27,9 @@ class AdminController < ApplicationController
 	def groups_edit
 		@action_title = 'groups_edit'
 		if (params[:id])
+			@actions = Pages.get_all
+			@actions_active = GroupsToRoles.find_by group_id: params[:id]
+			@actions_title = PagesActions.get_all
 			@group = Group.find_by id: params[:id]
 			if @group.nil?
 				redirect_to url_for(:controller => :admin, :action => :groups_index)
@@ -37,8 +40,9 @@ class AdminController < ApplicationController
 						if @old_default_group
 							@old_default_group.update(:is_default => false)
 						end
+						@group.update(:title => params[:group][:title], :is_default => true)
 					end
-					@group.update(:title => params[:group][:title], :is_default => true)
+					@group.update(:title => params[:group][:title])
 					redirect_to url_for(:controller => :admin, :action => :groups_index)
 				end
 			end

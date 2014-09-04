@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831072948) do
+ActiveRecord::Schema.define(version: 20140904051649) do
 
   create_table "groups", force: true do |t|
     t.string   "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20140831072948) do
     t.datetime "updated_at"
     t.boolean  "is_default"
   end
+
+  create_table "groups_to_roles", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "page_id"
+    t.integer  "action_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups_to_roles", ["group_id"], name: "index_groups_to_roles_on_group_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
