@@ -39,7 +39,6 @@ GEM
     coffee-script-source (1.7.1)
     daemons (1.1.9)
     erubis (2.7.0)
-    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.2.1)
     faraday (0.9.0)
@@ -83,7 +82,6 @@ GEM
       multi_json
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
-    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
     rack (1.5.2)
@@ -159,6 +157,7 @@ PLATFORMS
 DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
+  execjs
   jbuilder (~> 2.0)
   jquery-rails
   omniauth

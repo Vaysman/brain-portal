@@ -1,7 +1,10 @@
 class AdminController < ApplicationController	
 
 	def index
-		raise  PagesActions.get_id_by_alias('delete').inspect
+		username = cookies[:auth_login]
+		user_info = User.find_by username: username
+		Access.is('settings.groups.delete', user_info.group_id)
+			
 	end
 
 	###################################GROUPS#####################################
