@@ -23,12 +23,19 @@
       <%  @actions.each do |key, action|%>
       <tr>
         <% action.each do |act| %>
-        <td><%= act[:title] %></td>
+        <td><%= act[:title]+":" %></td>
         <% @actions_title.each do |keyt, title|%>
           <% title.each do |tit|%>
-            <td><%= check_box_tag ('actions['+key.to_s+']['+keyt.to_s+']') %>
-                   <%= label_tag (tit[:title])%></td>
-          <% end %>
+          <% @actions_active.each do |check| %>
+            <% if (check.action_id == keyt && check.page_id == key) %>
+                <% @flag = true 
+                break%>
+                <% else @flag = false %>
+            <% end %>
+            <% end %>
+                <td><%= check_box_tag 'actions['+key.to_s+']['+keyt.to_s+']', 1, @flag ? true : false %>
+                <%= label_tag (tit[:title])%></td>
+            <% end %>
           <% end %>
         <% end %>
       </tr>

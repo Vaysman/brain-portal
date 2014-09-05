@@ -28,7 +28,8 @@ class AdminController < ApplicationController
 		@action_title = 'groups_edit'
 		if (params[:id])
 			@actions = Pages.get_all
-			@actions_active = GroupsToRoles.find_by group_id: params[:id]
+			@actions_active = GroupsToRoles.where(:group_id => params[:id]).all
+			#raise @actions_active.inspect
 			@actions_title = PagesActions.get_all
 			@group = Group.find_by id: params[:id]
 			if @group.nil?
@@ -37,13 +38,22 @@ class AdminController < ApplicationController
 				if (params[:group])
 					if params[:group][:is_default]
 						@old_default_group = Group.find_by is_default: true
-						if @old_default_group
+						if (@old_default_group && @old_default_group.id != @group.id)
 							@old_default_group.update(:is_default => false)
 						end
 						@group.update(:title => params[:group][:title], :is_default => true)
 					end
 					@group.update(:title => params[:group][:title])
 					redirect_to url_for(:controller => :admin, :action => :groups_index)
+					if (params[:actions])
+						GroupsToRoles.delete_all(:group_id => params[:id])
+						params[:actions].each do |key, action|
+							action.each do |keyt,act|
+								@action = GroupsToRoles.new(:group_id => params[:id], :page_id => key, :action_id => keyt)
+								@action.save
+							end
+						end
+					end
 				end
 			end
 
