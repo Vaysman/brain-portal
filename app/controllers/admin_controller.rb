@@ -39,14 +39,15 @@ class AdminController < ApplicationController
 				redirect_to url_for(:controller => :admin, :action => :groups_index)
 			else
 				if (params[:group])
-					if params[:group][:is_default]
+					if (params[:group][:is_default].to_i == 1)
 						@old_default_group = Group.find_by is_default: true
 						if (@old_default_group && @old_default_group.id != @group.id)
 							@old_default_group.update(:is_default => false)
 						end
 						@group.update(:title => params[:group][:title], :is_default => true)
+					else
+						@group.update(:title => params[:group][:title], :is_default => false)
 					end
-					@group.update(:title => params[:group][:title])
 					redirect_to url_for(:controller => :admin, :action => :groups_index)
 					if (params[:actions])
 						GroupsToRoles.delete_all(:group_id => params[:id])
