@@ -7,9 +7,9 @@ class Access < ActiveRecord::Base
 		@action_id = PagesActions.get_id_by_alias(@action_alias)
 		@action = GroupsToRoles.where(:group_id => group_id, :page_id => @page_id, :action_id => @action_id)
 		if (@action.empty?)
-			return false
+			false
 		else
-			return true
+			true
 		end
 	end
 end

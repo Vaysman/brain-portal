@@ -32,44 +32,33 @@ class AdminController < ApplicationController
 	end
 
 	def groups_edit
-		if (Access.is('settings.groups.edit', @user_info.group_id))
+		if (!Access.is('settings.groups.edit', @user_info.group_id))
+			redirect_to root_path
+		end
+		if (!params[:id])
+			redirect_to url_for(:controller => :admin, :action => :groups_index)
+		end
 			@action_title = 'groups_edit'
-			if (params[:id])
-				@actions = Pages.get_all
-				@actions_active = GroupsToRoles.where(:group_id => params[:id]).all
-				#raise @actions_active.inspect
-				@actions_title = PagesActions.get_all
-				@group = Group.find_by id: params[:id]
+			@actions = Pages.get_all
+			@actions_active = GroupsToRoles.where(:group_id => params[:id]).all
+			@actions_title = PagesActions.get_all
+			@group = Group.find_by id: params[:id]
 				if @group.nil?
 					redirect_to url_for(:controller => :admin, :action => :groups_index)
 				else
-					if (params[:group])
-						if (params[:group][:is_default].to_i == 1)
-							@old_default_group = Group.find_by is_default: true
-							if (@old_default_group && @old_default_group.id != @group.id)
-								@old_default_group.update(:is_default => false)
-							end
-							@group.update(:title => params[:group][:title], :is_default => true)
-						else
-							@group.update(:title => params[:group][:title], :is_default => false)
-						end
-						redirect_to url_for(:controller => :admin, :action => :groups_index)
+					if (!params[:group])
+						render 'groups_edit'
+					else
+						is_default = params[:group][:is_default].to_i
+						new_title = params[:group][:title]
+						@group.make_new_default(is_default, new_title)
 						if (params[:actions])
-							GroupsToRoles.delete_all(:group_id => params[:id])
-							params[:actions].each do |key, action|
-								action.each do |keyt,act|
-									@action = GroupsToRoles.new(:group_id => params[:id], :page_id => key, :action_id => keyt)
-									@action.save
-								end
-							end
+							actions = params[:actions]
+							GroupsToRoles.change_roles(actions, @group.id)
 						end
+					redirect_to url_for(:controller => :admin, :action => :groups_index)
 					end
-				end
-
-			end
-		else
-			redirect_to root_path
-		end
+				end	
 	end
 
 	def groups_delete
@@ -90,7 +79,7 @@ class AdminController < ApplicationController
 
 	def groups_index
 		if (Access.is('settings.groups.index', @user_info.group_id))
-			all.paginate(page: params[:page], per_page: 10)
+			@groups = Group.all.paginate(page: params[:page], per_page: 10)
 		else
 			redirect_to root_path
 		end
