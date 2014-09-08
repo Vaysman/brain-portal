@@ -14,6 +14,7 @@ ru:
 
   #PAGES
   settings_groups: 'Справочник/Группы'
+  setting_users: 'Справочник/Пользователи'
   #############################################################################################################
   #ACTIONS
   view: 'Просмотр'
@@ -58,6 +59,26 @@ ru:
   group_index_title: 'Название'
   group_is_default: 'По умолчанию'
   group_index_id: 'ID'
+
+  user_index: 'Список пользователей'
+  user_index_id: 'ID'
+  user_index_username: 'Никнейм'
+  user_time_created: 'Время регистрации'
+  user_group: 'Группа'
+  active_user: 'Активен'
+  not_active_user: 'Неактивен'
+  activation: 'Статус актвиации'
+  user_edit: 'Редактирование пользователя'
+  name: 'ФИО'
+  group_id: 'Группа'
+  skype: 'Skype'
+  icq: 'ICQ'
+  birthdate: 'День рождения'
+  date:
+    order:
+      - :day
+      - :month
+      - :year
   ##############################################################
   
 

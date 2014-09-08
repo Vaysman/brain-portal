@@ -1,0 +1,42 @@
+<h1><%= t('user_edit')+" "+@user.username%></h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+<%= form_for @user, url: {action:'users_edit'} do |f| %>
+<p>
+  <%= f.label(:name, t('name')) %>
+  <%= f.text_field (:name) %>
+</p>
+<p>
+  <%= f.label(:username, t('username')) %>
+  <%= f.text_field (:username) %>
+</p>
+<p>
+  <%= f.label(:name, t('name')) %>
+  <%= f.text_field (:name) %>
+</p>
+<p>
+  <%= f.label(:group_id, t('group_id')) %>
+  <%= f.select(:group_id, Group.all.collect {|p| [ p.title, p.id ] }, :include_blank => '') %>
+</p>
+<p>
+  <%= f.label(:skype, t('skype')) %>
+  <%= f.text_field (:skype) %>
+</p>
+<p>
+  <%= f.label(:icq, t('icq')) %>
+  <%= f.text_field (:icq) %>
+</p>
+<p>
+  <%= f.label(:birthdate, t('birthdate')) %>
+  <%= date_select :user, :birthday, :start_year => 1950, :include_blank => true, :use_month_names => ['Январь', 'Февраль', 'Март', 'Апрель',
+                                                                                                     'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'] %>
+</p>
+<% end %>
+<%= link_to t('back'), :back %>

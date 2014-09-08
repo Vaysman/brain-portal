@@ -1,0 +1,21 @@
+<h1><%= t('user_index')%></h1>
+<table>
+  <tr>
+    <th><%= t('user_index_id') %></th>
+    <th><%= t('user_index_username') %></th>
+    <th><%= t('user_time_created') %></th>
+    <th><%= t('activation') %></th>
+    <th><%= t('user_group') %></th>
+  </tr>
+<% @users.each do |user| %>
+<tr>
+      <td><%= user.id %></td>
+      <td><%= link_to user.username, controller: :admin, action: :users_edit, id: user.id %></td>
+      <td><%= user.created_at.strftime("%d.%m.%y, %H:%M:%S") %></td>
+      <td><%= user.active ? t('active_user') : t('not_active_user')%>
+      <td><%= user.group.title %></td>
+
+</tr>
+<% end %>
+</table>
+<%= will_paginate @users %>

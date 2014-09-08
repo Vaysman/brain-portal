@@ -86,6 +86,33 @@ class AdminController < ApplicationController
 		
 	end
 
+
+
+	####################################USERS###########################################
+	def users_index
+	  if (!Access.is('settings.users.index', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  @users = User.all.paginate(page: params[:page], per_page: 20)
+	end
+
+
+	def users_edit
+	  if (!Access.is('settings.users.edit', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  if (!params[:id])
+	  	redirect_to url_for(:controller => :admin, :action => :users_index)
+	  end
+	  @user = User.find_by id: params[:id]
+	  if (params[:user])
+	  	@user.set_new_info(params[:user])
+	  end
+
+
+	end
+	####################################################################################
+
 	private
 	  def group_params
 	    params.require(:group).permit(:title)
