@@ -106,7 +106,11 @@ class AdminController < ApplicationController
 	  end
 	  @user = User.find_by id: params[:id]
 	  if (params[:user])
-	  	@user.set_new_info(params[:user])
+	  	@user = @user.set_new_info(params[:user])
+	  	#raise @user.inspect
+	  	if @user.nil?
+	  	  redirect_to url_for(:controller => :admin, :action => :users_index)
+	  	end
 	  end
 
 

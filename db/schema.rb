@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904051649) do
+ActiveRecord::Schema.define(version: 20140908131709) do
 
   create_table "groups", force: true do |t|
     t.string   "title"
@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 20140904051649) do
     t.string   "failed_login_count"
     t.datetime "last_login_at"
     t.string   "last_login_ip"
-    t.integer  "city_id"
-    t.integer  "country_id"
     t.datetime "birthday"
     t.string   "skype"
     t.string   "icq"
@@ -50,10 +48,10 @@ ActiveRecord::Schema.define(version: 20140904051649) do
     t.datetime "updated_at"
     t.boolean  "active"
     t.integer  "group_id"
+    t.string   "city"
+    t.string   "country"
   end
 
-  add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
-  add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree
   add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
 
 end
