@@ -107,7 +107,6 @@ class AdminController < ApplicationController
 	  @user = User.find_by id: params[:id]
 	  if (params[:user])
 	  	@user = @user.set_new_info(params[:user])
-	  	#raise @user.inspect
 	  	if @user.nil?
 	  	  redirect_to url_for(:controller => :admin, :action => :users_index)
 	  	end
@@ -117,9 +116,55 @@ class AdminController < ApplicationController
 	end
 	####################################################################################
 
+
+	######################################CATEGORIES####################################
+	def categories_index
+	  if (!Access.is('settings.categories.index', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  @categories = Category.all.paginate(page: params[:page], per_page: 10)
+	end
+
+	def categories_create
+	  if (!Access.is('settings.categories.create', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  @action_title = 'categories_create'
+	  if !params[:category]
+	  	@category = Category.new
+	  else
+	  	@category = Category.new(categories_params)
+	  	if @category.save
+	  	  redirect_to url_for(:controller => :admin, :action => :categories_index)	
+	  	end
+	  end
+	end
+
+	def categories_edit
+	  if (!Access.is('settings.categories.edit', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  @action_title = 'categories_edit'
+	  if !params[:id]
+	  	redirect_to url_for(:controller => :admin, :action => :categories_index)
+	  end
+	  @category = Category.find_by id: params[:id]
+	  if params[:category]
+	    @category = @category.save_new_data(params[:category])
+	    if @category.nil?
+	  	  redirect_to url_for(:controller => :admin, :action => :categories_index)
+	    end
+	    end
+	end
+
+	####################################################################################
+
 	private
 	  def group_params
 	    params.require(:group).permit(:title)
+	  end
+	  def categories_params
+	  	params.require(:category).permit(:title, :description)
 	  end
 	####################################################################################
 end

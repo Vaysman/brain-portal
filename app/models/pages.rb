@@ -12,6 +12,11 @@ class Pages < ActiveRecord::Base
 			    :title => I18n.t('setting_users'),
 			    :alias => 'settings.users'
 			 ],
+			 3 => [
+			    :id => '3',
+			    :title => I18n.t('setting_categories'),
+			    :alias => 'settings.categories'
+			 ],
 			 
 				}
 		return array

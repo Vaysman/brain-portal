@@ -37,6 +37,13 @@ Rails.application.routes.draw do
   get 'crm/users' => 'admin#users_index'
   get 'crm/users/edit/:id' => 'admin#users_edit'
   patch 'crm/users/edit/:id' => 'admin#users_edit'
+
+  get 'crm/categories' => 'admin#categories_index'
+  get 'crm/categories/create' => 'admin#categories_create'
+  post 'crm/categories/create' => 'admin#categories_create'
+  get 'crm/categories/edit/:id' => 'admin#categories_edit'
+  patch 'crm/categories/edit/:id' => 'admin#categories_edit'
+  
   ##########################################
 
 

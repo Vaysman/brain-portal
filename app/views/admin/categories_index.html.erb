@@ -1,0 +1,17 @@
+<h1><%= t('category_index')%></h1>
+<table>
+  <tr>
+    <th><%= t('_id')%></th>
+    <th><%= t('_title')%></th>
+    <th><%= t('_description')%></th>
+  </tr>
+<% @categories.each do |category| %>
+<tr>
+      <td><%= category.id %></td>
+      <td><%= link_to category.title, controller: :admin, action: :categories_edit, id: category.id %></td>
+      <td><%= category.description %></td>
+</tr>
+<% end %>
+</table>
+<%= will_paginate @categories %>
+<%= link_to(button_tag(t('_create')), controller: :admin, action: :categories_create) %>

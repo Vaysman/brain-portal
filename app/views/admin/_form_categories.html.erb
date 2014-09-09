@@ -1,0 +1,20 @@
+<% if @category.errors.any? %>
+  <div id="error_explanation">
+    
+    <% @category.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <%= form_for @category, url: {action: @action_title} do |f| %>
+	<p>
+	<%= f.label(:title, t('_title')) %>
+	<%= f.text_field :title %>
+	</p>
+  <p>
+  <%= f.label(:description, t('_description')) %>
+  <%= f.text_area(:description, size: '50x8', style: 'resize:none;') %>
+  </p>
+  <%= f.submit(t('save_button'))%>
+  <% end %>
