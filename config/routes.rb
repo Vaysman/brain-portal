@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   post 'crm/categories/create' => 'admin#categories_create'
   get 'crm/categories/edit/:id' => 'admin#categories_edit'
   patch 'crm/categories/edit/:id' => 'admin#categories_edit'
+  get 'crm/categories/edit/:id/add' => 'admin#categories_create_question'
+  post 'crm/categories/edit/:id/add' => 'admin#categories_create_question'
   
   ##########################################
 

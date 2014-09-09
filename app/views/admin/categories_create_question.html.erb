@@ -1,0 +1,41 @@
+<h1><%= t('add_question')+' "'+@category.title+'"'%></h1>
+<% if @question.errors.any? %>
+  <div id="error_explanation">
+    
+    <% @question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+<%= form_for @question, url: {action:'categories_create_question'} do |f| %>
+	<p>
+	<%= f.label(:question, t('question')) %>
+	<%= f.text_area(:question, :size => '80x10', :style =>'resize:none;') %>
+	</p>
+	<p>
+	<%= f.label(:image, t('image')) %>
+	<%= f.file_field :image %>
+	</p>
+	<p>
+	<%= f.label(:a, t('a')) %>
+	<%= f.text_field(:a) %>
+	</p>
+	<p>
+	<%= f.label(:b, t('b')) %>
+	<%= f.text_field(:b) %>
+	</p>
+	<p>
+	<%= f.label(:c, t('c')) %>
+	<%= f.text_field(:c) %>
+	</p>
+	<p>
+	<%= f.label(:d, t('d')) %>
+	<%= f.text_field(:d) %>
+	</p>
+	<p>
+	<%= f.label(:correct_answer, t('correct_answer')) %>
+	<%= f.select(:correct_answer, [['A', 'a'], ['B', 'b'], ['C', 'c'], ['D', 'd']], :include_blank => t('choose_option')) %>
+	</p>
+	<%= f.submit(t('save_button'))%>
+<% end %>

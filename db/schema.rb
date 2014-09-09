@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909090659) do
+ActiveRecord::Schema.define(version: 20140909114013) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -36,6 +36,24 @@ ActiveRecord::Schema.define(version: 20140909090659) do
   end
 
   add_index "groups_to_roles", ["group_id"], name: "index_groups_to_roles_on_group_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.text     "question"
+    t.string   "a"
+    t.string   "b"
+    t.string   "c"
+    t.string   "d"
+    t.string   "correct_answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "category_id"
+  end
+
+  add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -157,6 +157,20 @@ class AdminController < ApplicationController
 	    end
 	end
 
+	def categories_create_question
+	  if (!Access.is('settings.categories.edit', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  if params[:id]
+	  	@category = Question.get_category(params[:id])
+	  end
+	  if !params[:question]
+	  	@question = Question.new
+	  else
+	  	raise params[:question].inspect
+	  end
+	end
+
 	####################################################################################
 
 	private
@@ -165,6 +179,9 @@ class AdminController < ApplicationController
 	  end
 	  def categories_params
 	  	params.require(:category).permit(:title, :description)
+	  end
+	  def questions_params
+	  	params.require(:question).permit(:question, :a, :b, :c, :d, :correct_answer)
 	  end
 	####################################################################################
 end
