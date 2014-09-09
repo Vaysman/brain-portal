@@ -154,7 +154,10 @@ class AdminController < ApplicationController
 	    if @category.nil?
 	  	  redirect_to url_for(:controller => :admin, :action => :categories_index)
 	    end
-	    end
+      else
+       @question = @category.question.all.paginate(page: params[:page], per_page: 50)
+       @id = params[:id]
+	  end
 	end
 
 	def categories_create_question
@@ -167,7 +170,12 @@ class AdminController < ApplicationController
 	  if !params[:question]
 	  	@question = Question.new
 	  else
-	  	raise params[:question].inspect
+	  	@question = Question.new(questions_params)
+	  	@question.image = params[:question][:image]
+	  	@question.category_id = params[:id]
+	  	if @question.save
+  		  redirect_to url_for(:controller => :admin, :action => :categories_edit, :id => params[:id])
+  		end
 	  end
 	end
 

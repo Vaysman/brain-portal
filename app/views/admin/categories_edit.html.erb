@@ -1,3 +1,17 @@
 <h1><%= t('category_edit')+' "'+@category.title+'"'%></h1>
 <%= render 'form_categories' %>
+<hr>
+<%= link_to(button_tag(t('_create')), add_question_path)%>
+<% if (@category.question) %>
+	<h3><%= t('question_for')%></h3>
+	<table>
+	<tr>
+		<th><%= t('_id')%></th><th><%= t('question')%></th><th><%= t('_image')%></th><th><%= t('correct_answer')%></th>
+	</tr>
+	<% @question.each do |question| %>
+	  <tr><td><%= question.id%></td><td><%= question.question%><td><%= (question.image_file_name.nil?)? "-" : image_tag(question.image.url, :height => '100', :width => '100') %></td></td><th><%= question[question.correct_answer] %></th></tr>
+	<% end %>
+	</table>
+<% end %>
+<%= will_paginate @question %>
 <%= link_to t('back'), :back %>
