@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-	has_many :question
+	has_many :question, dependent: :destroy
 	def save_new_data(new_data)
 	  if (new_data[:title])
 	  	self.title = new_data[:title]

@@ -6,10 +6,12 @@
 	<h3><%= t('question_for')%></h3>
 	<table>
 	<tr>
-		<th><%= t('_id')%></th><th><%= t('question')%></th><th><%= t('_image')%></th><th><%= t('correct_answer')%></th>
+		<th><%= t('_id')%></th><th><%= t('question')%></th><th><%= t('_image')%></th><th><%= t('correct_answer')%>
+		</th><th><%= t('delete_question')%></th>
 	</tr>
 	<% @question.each do |question| %>
-	  <tr><td><%= question.id%></td><td><%= question.question%><td><%= (question.image_file_name.nil?)? "-" : image_tag(question.image.url, :height => '100', :width => '100') %></td></td><th><%= question[question.correct_answer] %></th></tr>
+	  <tr><td><%= question.id%></td><td><%= question.question%><td><%= (question.image_file_name.nil?)? "-" : image_tag(question.image.url, :height => '100', :width => '100') %></td></td><td><%= question[question.correct_answer] %></td>
+	  <td><%= link_to(t('_delete'), delete_question_path(question.id), data: { confirm: t('_repeat_delete') })%></td></tr>
 	<% end %>
 	</table>
 <% end %>

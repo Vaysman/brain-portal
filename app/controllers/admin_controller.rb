@@ -160,6 +160,20 @@ class AdminController < ApplicationController
 	  end
 	end
 
+	def categories_delete
+	  if (!Access.is('settings.categories.delete', @user_info.group_id))
+	  	redirect_to root_path
+	  end	
+	  if params[:id]
+  	    @category = Category.find_by id: params[:id]
+  	    @question = @category.question
+		@question.destroy
+		@category.destroy
+  	    redirect_to url_for(index_categories_path)
+	  end
+	end
+
+
 	def categories_create_question
 	  if (!Access.is('settings.categories.edit', @user_info.group_id))
 	  	redirect_to root_path
@@ -176,6 +190,18 @@ class AdminController < ApplicationController
 	  	if @question.save
   		  redirect_to url_for(:controller => :admin, :action => :categories_edit, :id => params[:id])
   		end
+	  end
+	end
+
+	def categories_delete_question
+	  if (!Access.is('settings.categories.delete', @user_info.group_id))
+	  	redirect_to root_path
+	  end
+	  if params[:id]
+	  	@question = Question.find_by id: params[:id]
+	  	@category_id = @question.category_id
+	  	@question.destroy
+	  	redirect_to url_for(edit_category_path(@category_id))
 	  end
 	end
 

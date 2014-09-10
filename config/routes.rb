@@ -38,13 +38,15 @@ Rails.application.routes.draw do
   get 'crm/users/edit/:id' => 'admin#users_edit'
   patch 'crm/users/edit/:id' => 'admin#users_edit'
 
-  get 'crm/categories' => 'admin#categories_index'
+  get 'crm/categories' => 'admin#categories_index', :as => 'index_categories'
   get 'crm/categories/create' => 'admin#categories_create'
   post 'crm/categories/create' => 'admin#categories_create'
-  get 'crm/categories/edit/:id' => 'admin#categories_edit'
+  get 'crm/categories/edit/:id' => 'admin#categories_edit', :as => 'edit_category'
+  get 'crm/categories/delete/:id' => 'admin#categories_delete', as: 'delete_category'
   patch 'crm/categories/edit/:id' => 'admin#categories_edit'
   get 'crm/categories/edit/:id/add' => 'admin#categories_create_question', :as => 'add_question'
   post 'crm/categories/edit/:id/add' => 'admin#categories_create_question'
+  get 'crm/categories/question/delete/:id' => 'admin#categories_delete_question', :as => 'delete_question'
   
   ##########################################
 
