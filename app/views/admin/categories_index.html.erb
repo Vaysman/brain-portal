@@ -11,7 +11,7 @@
       <td><%= category.id %></td>
       <td><%= link_to category.title, controller: :admin, action: :categories_edit, id: category.id %></td>
       <td><%= category.description %></td>
-      <td><%= link_to(t('_delete'), delete_category_path(category.id))%></td>
+      <td><%= link_to(t('_delete'), delete_category_path(category.id), data: { confirm: t('_repeat_delete') })%></td>
 </tr>
 <% end %>
 </table>

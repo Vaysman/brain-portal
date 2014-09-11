@@ -11,7 +11,8 @@
 	</tr>
 	<% @question.each do |question| %>
 	  <tr><td><%= question.id%></td><td><%= question.question%><td><%= (question.image_file_name.nil?)? "-" : image_tag(question.image.url, :height => '100', :width => '100') %></td></td><td><%= question[question.correct_answer] %></td>
-	  <td><%= link_to(t('_delete'), delete_question_path(question.id), data: { confirm: t('_repeat_delete') })%></td></tr>
+	  <td><%= link_to(t('_delete'), delete_question_path(question.id), data: { confirm: t('_repeat_delete') })%></td>
+	  </tr>
 	<% end %>
 	</table>
 <% end %>
