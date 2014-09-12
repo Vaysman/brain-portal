@@ -4,16 +4,26 @@
     <th><%= t('_id')%></th>
     <th><%= t('_title')%></th>
     <th><%= t('_description')%></th>
-    <th><%= t('_delete')%></th>
+    <th><%= t('_options')%></th>
   </tr>
 <% @categories.each do |category| %>
 <tr>
       <td><%= category.id %></td>
       <td><%= link_to category.title, controller: :admin, action: :categories_edit, id: category.id %></td>
       <td><%= category.description %></td>
-      <td><%= link_to(t('_delete'), delete_category_path(category.id))%></td>
+      <td><%= link_to(t('_delete'), delete_category_path(category.id), data: { confirm: t('_repeat_delete') })%>
+          <%= link_to(t('_edit'), '#', :popup => ['exam_dialog','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,fullscren=yes,resizable=no'])%>
+      </td>
 </tr>
 <% end %>
 </table>
 <%= will_paginate @categories %>
 <%= link_to(button_tag(t('_create')), controller: :admin, action: :categories_create) %>
+<!--<div id="demo-form" class="demo-description" style="display: none;width:500px">
+  <p>
+   
+  </p>
+</div>
+
+<%=  link_to_modal "Demo Form", "#demo-form", :class=>"button" %>
+-->
