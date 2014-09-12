@@ -2,13 +2,73 @@
 <html>
 <head>
   <title><%= t('admin_title')%></title>
+  <script src="./Just another dropdown menu concept demo - RedTeamDesign_files/prefixfree.min.js"></script>
+
   <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<ul class="menu cf">
+			<li><a href="">Menu item</a></li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>			
+			</li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>	
+			</li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>	
+			</li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>	
+			</li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>	
+			</li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>	
+			</li>
+			<li><a href="">Menu item</a>
+				<ul class="submenu">
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+					<li><a href="">Submenu item</a></li>
+				</ul>	
+			</li>
+		</ul>
 <%= yield %>
-
+<p align="center">FOOTER</p>
 </body>
 </html>
