@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   #@ADMIN ROUTES############################
   get '/crm' => 'admin#index'
   get 'crm/groups/' => 'admin#groups_index'
-  get 'crm/groups/create' => 'admin#groups_create'
+  get 'crm/groups/create' => 'admin#groups_create', :as => 'create_group'
   post 'crm/groups/create' => 'admin#groups_create'
   get 'crm/groups/edit/:id' => 'admin#groups_edit'
   patch 'crm/groups/edit/:id' => 'admin#groups_edit'

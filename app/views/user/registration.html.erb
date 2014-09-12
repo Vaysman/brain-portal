@@ -1,3 +1,8 @@
+<div id="page_align">
+	<div class="sep_top">
+		<div class="close_img"><a href="#"><img src="images/close.png" alt="close"> </a></div>
+	</div>
+	<div class="sep_top1"></div>
 <h1><%= t('registration')%></h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -9,21 +14,22 @@
   </div>
   <% end %>
 <%= form_for @user, url: {action:'registration'} do |f| %>
-	<p>
-	<%= f.label(:username, t('username')) %>
-	<%= f.text_field :username %>
+	<p class="login_n">
+	<b><%= f.label(:username, t('username')) %></b>
+	<%= f.text_field(:username, :class => "canvas") %>
 	</p>
-	<p>
-	<%= f.label(:email, t('email')) %>
-	<%= f.email_field :email %>
+	<p class="login_n">
+	<b><%= f.label(:email, t('email')) %></b>
+	<%= f.email_field(:email, :class => "canvas") %>
 	</p>
-	<p>
-	<%= f.label(:password, t('pw')) %>
-	<%= f.password_field :password %>
+	<p class="login_n">
+	<b><%= f.label(:password, t('pw')) %></b>
+	<%= f.password_field(:password, :class => "canvas") %>
 	</p>
-	<p>
-	<%= f.label(:password_confirmation, t('r_pw')) %>
-	<%= f.password_field :password_confirmation %>
+	<p class="login_n">
+	<b><%= f.label(:password_confirmation, t('r_pw')) %></b>
+	<%= f.password_field(:password_confirmation, :class => "canvas") %>
 	</p>
-	<%= f.submit(t('register_submit'))%>
+	<%= f.submit(t('register_submit'), :class => "reg_bot")%>
 <% end %>
+</div>

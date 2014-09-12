@@ -3,8 +3,9 @@
 <hr>
 <%= link_to(button_tag(t('_create')), add_question_path)%>
 <% if (@category.question) %>
+	<div class="tables">
 	<h3><%= t('question_for')%></h3>
-	<table>
+	<table class="bordered">
 	<tr>
 		<th><%= t('_id')%></th><th><%= t('question')%></th><th><%= t('_image')%></th><th><%= t('correct_answer')%>
 		</th><th><%= t('delete_question')%></th>
@@ -15,6 +16,7 @@
 	  </tr>
 	<% end %>
 	</table>
+	</div>
 <% end %>
 <%= will_paginate @question %>
 <%= link_to t('back'), :back %>

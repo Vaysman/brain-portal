@@ -1,5 +1,6 @@
+<div class="tables">
 <h1><%= t('group_index')%></h1>
-<table>
+<table class="bordered">
   <tr>
     <th><%= t('group_index_id')%></th>
     <th><%= t('group_index_title')%></th>
@@ -11,4 +12,8 @@
 </tr>
 <% end %>
 </table>
+<p>
+	<%= link_to(button_tag(t('group_create'), :class => 'button'), create_group_path)%>
+</p>
+</div>
 <%= will_paginate @groups %>

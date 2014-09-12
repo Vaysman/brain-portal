@@ -1,5 +1,6 @@
+<div class="tables">
 <h1><%= t('user_index')%></h1>
-<table>
+<table class="bordered">
   <tr>
     <th><%= t('user_index_id') %></th>
     <th><%= t('user_index_username') %></th>
@@ -18,4 +19,5 @@
 </tr>
 <% end %>
 </table>
+</div>
 <%= will_paginate @users %>

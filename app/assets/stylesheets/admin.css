@@ -159,3 +159,97 @@
         #about a {
             color: #777;
         }
+
+        /* Таблиці*/
+
+		.tables{
+			margin: 20px auto;
+			width: 1000px;
+
+		}
+
+		.bordered {
+		    border: solid #ccc 1px;
+		    border-radius: 5px;
+		    box-shadow: 0 1px 1px #ccc;         
+		}
+		 
+		.bordered tr:hover {
+		    background: #e74c3c;
+		     
+		}    
+		 
+		.bordered td, .bordered th {
+		    border-left: 1px solid #ccc;
+		    border-top: 1px solid #ccc;
+		    padding: 10px;
+		    padding-left: 15px;
+		    text-align: left;    
+		}
+		 
+		.bordered th {
+		    background-color: #9edb46; 
+		    font-size: 19px;       
+		    border-top: none;
+		    padding: 15px;
+		    color: #fff;
+		    
+		}
+		 
+		.bordered td:first-child, .bordered th:first-child {
+		    border-left: none;
+		}
+		 
+		.bordered th:first-child {
+
+		    border-radius: 6px 0 0 0;
+		    background: #e74c3c; 
+		}
+		 
+		.bordered th:last-child {
+
+		    border-radius: 0 6px 0 0;
+		}
+		 
+		.bordered tr:last-child td:first-child {
+
+		    border-radius: 0 0 0 6px;
+		}
+		 
+		.bordered tr:last-child td:last-child {
+
+		    border-radius: 0 0 6px 0;
+		}
+		.bordered td:first-child {
+
+		    background: #e8d9d9; 
+		}
+
+		.bordered td:last-child {
+			
+		    background: #dbe0d3; 
+		}
+
+
+		.button{
+			height: 30px;
+			width: 190px;
+			display: block;
+			border-bottom: 1px solid #9edb46;
+			border-radius: 5px;
+			margin-right: 45px;
+			margin-top: 10px;
+			background: #9edb46;
+			text-align: center;
+			line-height: 30px;
+			font-size: 17px;
+			border-style: none;
+		}
+		.button:hover{
+			display: block;
+			background: #cbe7a2;
+			font-size: 20px;
+		}
+		.button:active{
+			border: 1px solid #9edb46
+		}

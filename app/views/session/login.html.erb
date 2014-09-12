@@ -6,26 +6,25 @@
 			<% flash.each do |key, value| %>
 			    <div class="alert alert-<%= key %>"><%= value %></div>
 			<% end %>
-
+			
 			<%= form_tag({controller: "session", action: "login"}, method: "post", class: "nifty_form") do %>
 
 			<p class="login_n"><b>
 				<%= label_tag(:username, t('username')) %>
 				</b>
-				<%= text_field_tag(:username) %>
+				<%= text_field_tag(:username, '', :class => "canvas") %>
 			</p>
 			<p class="login_n"><b>
 				<%= label_tag(:passsword, t('pw')) %>
 				</b>
-				<%= password_field_tag(:password) %>
+				<%= password_field_tag(:password, '', :class => "canvas") %>
 			</p>
-
+			<p class = "remember_pass">
+			<%= check_box_tag(:remember) %>
+			<b><%= label_tag(:remember, t('remember')) %></b>
+			</p>
 			<%= submit_tag(t('login_submit'),  class: "enter_link") %>
 			<%= link_to button_tag(t('registration'), class: "reg_link"), controller: 'user', action: 'registration' %>
-			<p class = "login_n">
-			<%= check_box_tag(:remember) %>
-			<%= label_tag(:remember, t('remember')) %>
-			</p>
 			<% end %>
 			<div class="sep_bottom"></div>
 	</div>

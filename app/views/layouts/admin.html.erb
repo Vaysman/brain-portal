@@ -8,66 +8,22 @@
   <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="zoom: 1;">
 <ul class="menu cf">
-			<li><a href="">Menu item</a></li>
-			<li><a href="">Menu item</a>
+			<li><a href="/crm/groups/"><%= t('_groups')%></a>
 				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
+					<li><a href="/crm/groups/create"><%= t('group_create')%></a></li>
 				</ul>			
 			</li>
-			<li><a href="">Menu item</a>
+			<li><a href="/crm/users/"><%= t('_users')%></a></li>
+			
+			<li><a href="/crm/categories/"><%= t('_categories')%></a>
 				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
+					<li><a href="/crm/categories/create"><%= t('category_create')%></a></li>
 				</ul>	
 			</li>
-			<li><a href="">Menu item</a>
-				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-				</ul>	
-			</li>
-			<li><a href="">Menu item</a>
-				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-				</ul>	
-			</li>
-			<li><a href="">Menu item</a>
-				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-				</ul>	
-			</li>
-			<li><a href="">Menu item</a>
-				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-				</ul>	
-			</li>
-			<li><a href="">Menu item</a>
-				<ul class="submenu">
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-					<li><a href="">Submenu item</a></li>
-				</ul>	
-			</li>
-		</ul>
+</ul>
+<br><br>
 <%= yield %>
 <p align="center">FOOTER</p>
 </body>

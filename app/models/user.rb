@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	validates :password, length: { in: 6..14 }, :on =>:create
 	validates :email,  :username, uniqueness: true
 	validates :password, confirmation: true
-	validates :icq, numericality: { only_integer: true }
+	validates :icq, numericality: { only_integer: true, :allow_blank => true }
 	validates :email, email_format: { message: :email_error }
 	validates :username, format: { with: /[{Cyrillic}a-zA-Z0-9]+$/, multiline: true,
     message: :username_error }
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
    	message: :pw_error }
 
    	def set_new_info (new_params)
-   	  if (new_params['birthday(3i)'] && new_params['birthday(2i)'] && new_params['birthday(1i)'])
+   	  if (!new_params['birthday(3i)'].empty? && !new_params['birthday(2i)'].empty? && !new_params['birthday(1i)'].empty?)
    	  	self.birthday = Date.civil(new_params['birthday(1i)'].to_i, new_params['birthday(2i)'].to_i, new_params['birthday(3i)'].to_i)
    	  end
    	  if (new_params[:name])
