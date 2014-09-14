@@ -3,6 +3,10 @@
 
 
 
+
+		body {
+		 
+		}
 		/* Clearing floats */
 		.cf:before,
 		.cf:after {
@@ -158,9 +162,9 @@
         
         #about a {
             color: #777;
-        }
+        }	
 
-        /* Таблиці*/
+		/* Таблиці*/
 
 		.tables{
 			margin: 20px auto;
@@ -173,11 +177,6 @@
 		    border-radius: 5px;
 		    box-shadow: 0 1px 1px #ccc;         
 		}
-		 
-		.bordered tr:hover {
-		    background: #e74c3c;
-		     
-		}    
 		 
 		.bordered td, .bordered th {
 		    border-left: 1px solid #ccc;
@@ -229,7 +228,46 @@
 			
 		    background: #dbe0d3; 
 		}
+		/* new */
+		footer{
+			margin: 20px auto;
+			width: 1045px;
+			height: 45px;
+			font-family: Arial, Helvetica;
 
+			background: #9edb46;
+			float: center;
+			position: relative;
+			-webkit-transform: skewX(-25deg);
+		}
+
+		.footer_text{
+			font-size: 10px;
+			color: #FFF;
+			-webkit-transform: skewX(25deg);
+			text-align: center;
+			padding-top: 12px;
+
+		}
+		.yield{
+			background: #FFF;
+			width: 1000px ;
+			margin: 0px auto;
+			box-shadow: 0 0 10px rgba(0,0,0,0.5);
+			padding: 10px;
+		}
+
+		a{
+			text-decoration: none;
+			color: #34659e;
+		}
+		a:hover{
+			color: #164d64;
+		}
+		h1{
+			font-size: 25px;
+			color: #34659e
+		}
 
 		.button{
 			height: 30px;

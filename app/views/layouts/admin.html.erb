@@ -8,7 +8,7 @@
   <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body style="zoom: 1;">
+<body style="zoom: 1;background: url(/assets/BG.png);">
 <ul class="menu cf">
 			<li><a href="/crm/groups/"><%= t('_groups')%></a>
 				<ul class="submenu">
@@ -23,8 +23,10 @@
 				</ul>	
 			</li>
 </ul>
-<br><br>
-<%= yield %>
-<p align="center">FOOTER</p>
+
+<div class="yield"><%= yield %></div>
+<footer>
+	<p class="footer_text">Copyright by Hvoyniy</p>
+</footer>
 </body>
 </html>
