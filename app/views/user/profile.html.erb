@@ -1,0 +1,24 @@
+<h3><%= "#{@user.name}: #{t('profile')}" %></h3>
+<hr>
+<div class = "options" style = "float:left;">
+	<%= t('manage') %><hr>
+	<% if (!@user.avatar_file_name.nil?)%>
+		<%= image_tag(@user.avatar.url, :size => '214x214')%>
+	<% else %>
+		<%= image_tag('/assets/no_avatar.png', :size => '214x214')%>
+	<% end %>
+	<br>
+	<% if (@status)%>
+	  <%= t('online')%>
+  	<% else %>
+  	  <%= t('offline')%>
+  	<% end %>
+</div>
+<div style="margin-left:350px; float:center;">
+	<%= t('_description')%><hr>
+	<div class = "main_info"><b><%= @user.name %></b>
+	<div class = "second_info"><p><%= "#{t('last_move')}: #{@user_last_move.strftime("%H:%M:%S, %d.%m.%y")}" %></p></div>
+	<b><%= t('contact_info') %></b>
+	<div class = "second_info"	
+	</div>
+</div>

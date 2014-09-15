@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
+   has_attached_file :avatar
 	before_create :hash_password, :on => :create
 	before_create :token
 	belongs_to :group
+   belongs_to :check_online
 	validates :email, :password, :username, presence: true
 	validates :password, length: { in: 6..14 }, :on =>:create
 	validates :email,  :username, uniqueness: true
@@ -52,6 +54,10 @@ class User < ActiveRecord::Base
    	  end
    	end
 
+       def check_online
+         @last_move = CheckOnline.find_by(:user_id => id)
+         @last_move.time
+       end
 
 
    	private
@@ -62,5 +68,7 @@ class User < ActiveRecord::Base
 	    	self.active = 0
 	    	self.activation_token = Digest::SHA1.hexdigest(Time.now.to_s + self.email)
 	    end
+
+
 
 end

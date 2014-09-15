@@ -40,7 +40,16 @@ class UserController < ApplicationController
 
 
 	def profile
-		
+		if @user_info.nil?
+		  redirect_to url_for(:controller => :session, :action => :login)
+		end
+		@user = User.find_by(id: @user_info.id)
+		@user_last_move = @user.check_online
+		if (Time.now - @user_last_move < 15*60)
+			@status = true
+		else @status = false
+		end
+
 	end
 
 

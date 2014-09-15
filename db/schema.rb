@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909114013) do
+ActiveRecord::Schema.define(version: 20140915134411) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20140909114013) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "check_onlines", force: true do |t|
+    t.datetime "time"
+    t.integer  "user_id"
+  end
+
+  add_index "check_onlines", ["user_id"], name: "index_check_onlines_on_user_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string   "title"
@@ -28,9 +35,11 @@ ActiveRecord::Schema.define(version: 20140909114013) do
   end
 
   create_table "groups_to_roles", force: true do |t|
-    t.integer "group_id"
-    t.integer "page_id"
-    t.integer "action_id"
+    t.integer  "group_id"
+    t.integer  "page_id"
+    t.integer  "action_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "groups_to_roles", ["group_id"], name: "index_groups_to_roles_on_group_id", using: :btree
@@ -73,6 +82,10 @@ ActiveRecord::Schema.define(version: 20140909114013) do
     t.integer  "group_id"
     t.string   "city"
     t.string   "country"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
