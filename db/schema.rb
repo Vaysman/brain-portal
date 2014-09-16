@@ -35,11 +35,9 @@ ActiveRecord::Schema.define(version: 20140916145356) do
   end
 
   create_table "groups_to_roles", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "page_id"
-    t.integer  "action_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "group_id"
+    t.integer "page_id"
+    t.integer "action_id"
   end
 
   add_index "groups_to_roles", ["group_id"], name: "index_groups_to_roles_on_group_id", using: :btree
