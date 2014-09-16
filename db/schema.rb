@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915134411) do
+ActiveRecord::Schema.define(version: 20140916050031) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -35,11 +35,9 @@ ActiveRecord::Schema.define(version: 20140915134411) do
   end
 
   create_table "groups_to_roles", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "page_id"
-    t.integer  "action_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "group_id"
+    t.integer "page_id"
+    t.integer "action_id"
   end
 
   add_index "groups_to_roles", ["group_id"], name: "index_groups_to_roles_on_group_id", using: :btree
@@ -86,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140915134411) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "sex"
   end
 
   add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree

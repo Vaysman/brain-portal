@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post '/registration' => 'user#registration'
   get 'user/token/' => 'user#token'
   get 'user/profile/' => 'user#profile'
+  get 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit'
   resource :user
   ##########################################
 

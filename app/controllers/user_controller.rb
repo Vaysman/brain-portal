@@ -51,6 +51,14 @@ class UserController < ApplicationController
 		end
 
 	end
+	def edit_profile
+		if @user_info.nil?
+		  redirect_to url_for(:controller => :session, :action => :login)
+		end
+		@user = User.find_by(id: @user_info.id)
+		if (params[:user])
+		end	
+	end
 
 
 	private

@@ -1,0 +1,21 @@
+<h3><%= "#{t('chnage_profile_to')} #{@user.username}" %></h3>
+<ul>
+	<li><%= link_to t('personal_info'), "javascript:void(0)", :onclick => 'swapToPersonal()'%></li>
+	<li><%= link_to t('contact_info'), "javascript:void(0)", :onclick => 'swapToContact()'%></li>
+</ul>
+<div id ="personal">
+	das
+</div>
+<div id = "contact" style="display:none;">
+	1dasd
+</div>
+<script>
+  function swapToPersonal() {
+  	$("#personal").show()
+  	$("#contact").hide()
+  }
+  function swapToContact() {
+  	$("#personal").hide()
+  	$("#contact").show()
+  }
+</script

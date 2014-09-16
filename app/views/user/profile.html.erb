@@ -1,4 +1,4 @@
-<h3><%= "#{@user.name}: #{t('profile')}" %></h3>
+<h3><%= "#{@user.username}: #{t('profile')}" %></h3>
 <hr>
 <div class = "options" style = "float:left;">
 	<%= t('manage') %><hr>
@@ -13,12 +13,47 @@
   	<% else %>
   	  <%= t('offline')%>
   	<% end %>
+  	<%= link_to(t('change_profile'), user_edit_path) %>
 </div>
 <div style="margin-left:350px; float:center;">
 	<%= t('_description')%><hr>
-	<div class = "main_info"><b><%= @user.name %></b>
+	<div class = "main_info">
+	<% if (!@user.email.nil?) %>
+	  <b><%= @user.name %></b>
+  	<% end %>
 	<div class = "second_info"><p><%= "#{t('last_move')}: #{@user_last_move.strftime("%H:%M:%S, %d.%m.%y")}" %></p></div>
 	<b><%= t('contact_info') %></b>
-	<div class = "second_info"	
+	<div class = "second_info">
+		<% if (!@user.email.nil?) %>
+		  <%= "#{t('email')} :" %>
+		  <%=mail_to(@user.email, @user.email) %> 
+		<% end %>
+		<% if (!@user.icq.nil?) %>
+		  <%= "#{t('icq')}: " %>
+		  <%= link_to @user.icq, "http://www.icq.com/whitepages/cmd.php?uin=#{@user.icq}&action=message" %>
+	    <% end %>
+	    <% if (!@user.skype.nil?) %>
+		  <%= "#{t('skype')}: " %>
+		  <%= link_to @user.skype, "skype:#{@user.skype}?userinfo" %>
+	    <% end %>
+	</div>
+	<b><%= t('personal_info') %></b>
+	<div class = "second_info">
+	  <% if (!@user.sex.nil?) %>
+	  	<%= "#{t('sex')}	: #{(@user.sex==true)? t('man'): t('woman')}" %>
+	  <% end %>
+	  <br>
+	  <% if (!@user.birthday.nil?) %>
+	  	<%= "#{t('birthdate')}	: #{@user.birthday.strftime("%d.%m.%y")}" %>
+	  <% end %>
+	  <br>
+	  <% if (!@user.country.empty?) %>
+	  	<%= "#{t('country')}	: #{@user.country}" %>
+	  <% end %>
+	  <br>
+	  <% if (!@user.city.empty?) %>
+	  	<%= "#{t('city')}	: #{@user.city}" %>
+	  <% end %>
+	</div>
 	</div>
 </div>
