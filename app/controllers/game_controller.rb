@@ -8,7 +8,10 @@ class GameController < ApplicationController
 		@message.content = params[:message][:content]
 		@message.user_id = @user_info.id
 		@message.save!
-		
+		respond_to do |format|
+            format.js
+            format.html
+        end
 	end
   private
 	  def msg_params
