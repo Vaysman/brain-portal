@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   get 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit'
   patch 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit_post'
   resource :user
+
+  get '/games/single' => 'game#single', :as => 'single'
+  get '/games/single/play/:id' => 'game#single_play', :as => 'single_play'
+  post '/messages/new' => 'message#new', :as => 'messages'
+  
   ##########################################
 
   #@ADMIN ROUTES############################

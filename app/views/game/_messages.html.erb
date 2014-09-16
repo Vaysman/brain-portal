@@ -1,0 +1,3 @@
+<% @messages.each do |msg|%>
+<li><p style="float:left"><%= msg.content %></p><p style="float:right"><%= msg.created_at.strftime("%H:%M:%S")%></p></li>
+<% end %>
