@@ -57,7 +57,12 @@ class UserController < ApplicationController
 		end
 		@user = User.find_by(id: @user_info.id)
 		if (params[:user])
-		end	
+			#raise params[:user].inspect
+		  @user = @user.set_new_info(params[:user])
+	  	  if @user.nil?
+	  	    redirect_to url_for(:controller => :user, :action => :profile)
+	  	  end
+		end
 	end
 
 

@@ -186,6 +186,7 @@ class AdminController < ApplicationController
 	  else
 	  	@question = Question.new(questions_params)
 	  	@question.image = params[:question][:image]
+	  	@question.image_file_name = Digest::SHA1.hexdigest(Time.now.to_s+@question[:question])
 	  	@question.category_id = params[:id]
 	  	if @question.save
   		  redirect_to url_for(:controller => :admin, :action => :categories_edit, :id => params[:id])

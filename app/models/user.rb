@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
    has_attached_file :avatar
+   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	before_create :hash_password, :on => :create
 	before_create :token
 	belongs_to :group
@@ -47,6 +48,22 @@ class User < ActiveRecord::Base
    	  if (new_params[:country])
    	  	self.country = new_params[:country]
    	  end
+
+        if (new_params[:sex])
+         self.sex = new_params[:sex]
+        end
+
+        if (new_params[:about])
+         self.about = new_params[:about]
+        end
+
+        if (new_params[:avatar])
+         self.avatar = new_params[:avatar]
+         self.avatar_file_name = Digest::SHA1.hexdigest(Time.now.to_s+username)
+        end
+        if (new_params[:delete_avatar])
+         self.avatar = nil
+        end
    	  if self.save
    	  	
    	  else

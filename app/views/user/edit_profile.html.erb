@@ -1,14 +1,71 @@
-<h3><%= "#{t('chnage_profile_to')} #{@user.username}" %></h3>
+<h3><%= "#{t('change_profile_to')} #{@user.username}" %></h3>
 <ul>
 	<li><%= link_to t('personal_info'), "javascript:void(0)", :onclick => 'swapToPersonal()'%></li>
 	<li><%= link_to t('contact_info'), "javascript:void(0)", :onclick => 'swapToContact()'%></li>
 </ul>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+<%= form_for @user, url: {action:'edit_profile'} do |f| %>
 <div id ="personal">
-	das
+<p>
+  <%= f.label(:name, t('name')) %>
+  <%= f.text_field (:name) %>
+</p>
+<p>
+  <%= f.label(:username, t('username')) %>
+  <%= f.text_field (:username) %>
+</p>
+<p>
+  <%= f.label(:avatar, t('avatar')) %>
+  <%= f.file_field :avatar %>
+  <%= check_box_tag('user[delete_avatar]') %>
+  <%= label_tag('user[delete_avatar]', t('delete_avatar')) %>
+  </p>
+<p>
+  <%= f.label(:sex, t('sex')) %>
+  <%= f.select(:sex, [[t('man'), true], [t('woman'), false]], :include_blank => '') %>
+</p>
+<p>
+  <%= f.label(:birthdate, t('birthdate')) %>
+  <%= date_select :user, :birthday, :start_year => 1950, :include_blank => true, :use_month_names => ['Январь', 'Февраль', 'Март', 'Апрель',
+                                                                                                     'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'] %>
+</p>
+<p>
+  <%= f.label(:about, t('about')) %>
+  <%= f.text_area(:about, :size => '80x10', :style =>'resize:none;') %>
+</p>
 </div>
 <div id = "contact" style="display:none;">
-	1dasd
+	<p>
+  <%= f.label(:email, t('email')) %>
+  <%= f.text_field (:email) %>
+</p>
+<p>
+  <%= f.label(:icq, t('icq')) %>
+  <%= f.text_field (:icq) %>
+</p>
+<p>
+  <%= f.label(:skype, t('skype')) %>
+  <%= f.text_field (:skype) %>
+</p>
+<p>
+  <%= f.label(:country, t('country')) %>
+  <%= f.text_field (:country) %>
+</p>
+<p>
+  <%= f.label(:city, t('city')) %>
+  <%= f.text_field (:city) %>
+</p>
 </div>
+<%= f.submit(t('save_button'))%>
+<% end %>
 <script>
   function swapToPersonal() {
   	$("#personal").show()
@@ -18,4 +75,4 @@
   	$("#personal").hide()
   	$("#contact").show()
   }
-</script
+</script>

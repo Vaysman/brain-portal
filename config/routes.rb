@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'user/token/' => 'user#token'
   get 'user/profile/' => 'user#profile'
   get 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit'
+  patch 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit_post'
   resource :user
   ##########################################
 
