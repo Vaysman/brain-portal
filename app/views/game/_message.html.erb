@@ -2,5 +2,5 @@
     <li>
     <div style = "float:left;"><%="#{@message.user.username}: #{@message.content}"%></div>
     <div style = "float:right;"><%= @message.created_at.strftime("%H:%M:%S")%></div>
-    </li>
+    </li><br>
     <% end %>
