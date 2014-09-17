@@ -3,7 +3,7 @@
 
 $(function() {
   var faye = new Faye.Client('http://localhost:9292/faye');
-  faye.subscribe("/game/messages/new", function(data) {
-    eval(data);
+  faye.subscribe("/games/messages/new", function(data) {
+  	eval(data)
   });
 });
