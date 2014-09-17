@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
    validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	before_create :hash_password, :on => :create
 	before_create :token
-	belongs_to :group
-   belongs_to :check_online
+	belongs_to :group  
+  belongs_to :check_online
 	validates :email, :password, :username, presence: true
 	validates :password, length: { in: 6..14 }, :on =>:create
 	validates :email,  :username, uniqueness: true

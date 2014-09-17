@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916145356) do
+ActiveRecord::Schema.define(version: 20140917050518) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20140916145356) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "chat_messages", force: true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "chat_messages", ["user_id"], name: "index_chat_messages_on_user_id", using: :btree
 
   create_table "check_onlines", force: true do |t|
     t.datetime "time"
@@ -41,15 +50,6 @@ ActiveRecord::Schema.define(version: 20140916145356) do
   end
 
   add_index "groups_to_roles", ["group_id"], name: "index_groups_to_roles_on_group_id", using: :btree
-
-  create_table "messages", force: true do |t|
-    t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.text     "question"

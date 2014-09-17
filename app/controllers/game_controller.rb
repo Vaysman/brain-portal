@@ -1,13 +1,13 @@
 class GameController < ApplicationController
 	def single
 	  @categories = Category.all
-	  @messages = Message.all
+	  @messages = ChatMessage.all
 	end
 	def message_new
-		@message = Message.new
-		@message.content = params[:message][:content]
+		@message = ChatMessage.new
+		@message.content = params[:chat_message][:content]
 		@message.user_id = @user_info.id
-		@message.save!
+		@message.save
 		respond_to do |format|
             format.js
             format.html
@@ -15,6 +15,6 @@ class GameController < ApplicationController
 	end
   private
 	  def msg_params
-	    params.require(:message).permit(:content)
+	    params.require(:chat_message).permit(:content)
 	  end
 end

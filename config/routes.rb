@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get '/games/single' => 'game#single', :as => 'single'
   get '/games/single/play/:id' => 'game#single_play', :as => 'single_play'
-  post '/game/messages/new' => 'game#message_new', :as => 'messages'
+  post '/game/messages/new' => 'game#message_new', :as => 'chat_messages'
   get '/game/messages/new' => 'game#message_new', :as => 'messages_get'
   
   ##########################################
