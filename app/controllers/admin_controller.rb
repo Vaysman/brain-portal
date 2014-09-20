@@ -52,11 +52,10 @@ class AdminController < ApplicationController
 						is_default = params[:group][:is_default].to_i
 						new_title = params[:group][:title]
 						@group.make_new_default(is_default, new_title)
-						if (params[:actions])
-							actions = params[:actions]
-							GroupsToRoles.change_roles(actions, @group.id)
-						end
-					redirect_to url_for(:controller => :admin, :action => :groups_index)
+
+						actions = params[:actions]
+						GroupsToRoles.change_roles(actions, @group.id)
+						redirect_to url_for(:controller => :admin, :action => :groups_index)
 					end
 				end	
 	end

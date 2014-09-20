@@ -23,6 +23,11 @@ class PagesActions < ActiveRecord::Base
 			    :title => I18n.t('delete'),
 			    :alias => 'delete'
 			 ],
+			 5 => [
+			    :id => '5',
+			    :title => I18n.t('play'),
+			    :alias => 'play'
+			 ],
 			 
 				}
 		return array

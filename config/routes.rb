@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#login'
   get '/registration' => 'user#registration'
   post '/registration' => 'user#registration'
-  get 'user/token/' => 'user#token'
+  get 'user/token/' => 'user#token', :as => 'activation'
   get 'user/profile/' => 'user#profile'
   get 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit'
   patch 'user/profile/edit' => 'user#edit_profile', :as => 'user_edit_post'

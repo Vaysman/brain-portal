@@ -46,14 +46,16 @@
 	  	<%= "#{t('birthdate')}	: #{@user.birthday.strftime("%d.%m.%y")}" %>
 	  <% end %>
 	  <br>
-	  <% if (!@user.country.empty?) %>
+	  <% if (!@user.country.nil?) %>
 	  	<%= "#{t('country')}	: #{@user.country}" %>
 	  <% end %>
 	  <br>
-	  <% if (!@user.city.empty?) %>
+	  <% if (!@user.city.nil?) %>
 	  	<%= "#{t('city')}	: #{@user.city}" %>
 	  <% end %>
 	</div>
-	<%= sanitize("<b>#{t('about')}:</b> #{@user.about}") %>
+	<% if (!@user.about.nil?) %>
+	  <%= sanitize("<b>#{t('about')}:</b> #{@user.about}") %>
+  	<% end %>
 	</div>
 </div>

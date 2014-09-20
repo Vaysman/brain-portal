@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917050518) do
+ActiveRecord::Schema.define(version: 20140920072542) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20140917050518) do
   end
 
   add_index "check_onlines", ["user_id"], name: "index_check_onlines_on_user_id", using: :btree
+
+  create_table "game_requests", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_requests", ["category_id"], name: "index_game_requests_on_category_id", using: :btree
+  add_index "game_requests", ["user_id"], name: "index_game_requests_on_user_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string   "title"

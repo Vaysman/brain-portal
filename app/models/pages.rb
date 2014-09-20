@@ -5,17 +5,26 @@ class Pages < ActiveRecord::Base
 			 1 => [
 			    :id => '1',
 			    :title => I18n.t('settings_groups'),
-			    :alias => 'settings.groups'
+			    :alias => 'settings.groups',
+			    :actions => [1, 2, 3, 4]
 			 ],
 			 2 => [
 			    :id => '2',
 			    :title => I18n.t('setting_users'),
-			    :alias => 'settings.users'
+			    :alias => 'settings.users',
+			    :actions => [1, 2, 3, 4]
 			 ],
 			 3 => [
 			    :id => '3',
 			    :title => I18n.t('setting_categories'),
-			    :alias => 'settings.categories'
+			    :alias => 'settings.categories',
+			    :actions => [1, 2, 3, 4]
+			 ],
+			 4 => [
+			    :id => '4',
+			    :title => I18n.t('single_game'),
+			    :alias => 'game.single',
+			    :actions => [1, 5]
 			 ],
 			 
 				}
