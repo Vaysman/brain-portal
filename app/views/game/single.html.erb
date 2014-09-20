@@ -1,9 +1,13 @@
 <h2><%= t('single_game')%></h2>
+<% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+<% end %>
 <% if (!@categories.nil?)%>
   <div id="categories">
   <% @categories.each do |category| %>
   	 <div class = "category">
  	 <%= link_to category.title, single_play_path(category.id) %>
+   <%= "#{t('requests_for')}: #{CategoriesOnlineCount.get_count(category.id)}"%>
  	 </div>
   <% end %>
   <% end %>

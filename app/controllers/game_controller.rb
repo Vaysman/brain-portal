@@ -11,10 +11,18 @@ class GameController < ApplicationController
 	  if (!Access.is('game.single.play', @user_info.group_id))
 			redirect_to root_path
 	  end
-	  	
+	  if (GameRequest.check_old_registration(@user_info.id, params[:id]) == true)
+	  	flash[:alert] = I18n.t('old_register')
+	  	redirect_to single_path
+	  else	
+	    GameRequest.register_user(@user_info.id, params[:id])
+	  end
 	end
 
 	def message_new
+		if (!Access.is('game.single.index', @user_info.group_id))
+			redirect_to root_path
+	   end
 		@message = ChatMessage.new
 		@message.content = params[:chat_message][:content]
 		@message.user_id = @user_info.id
