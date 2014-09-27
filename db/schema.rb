@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20140920180544) do
   create_table "game_requests", force: true do |t|
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "updated_at"
     t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "game_requests", ["category_id"], name: "index_game_requests_on_category_id", using: :btree

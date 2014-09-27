@@ -24,7 +24,8 @@
 			<b><%= label_tag(:remember, t('remember')) %></b>
 			</p>
 			<%= submit_tag(t('login_submit'),  class: "enter_link") %>
-			<%= link_to button_tag(t('registration'), class: "reg_link"), controller: 'user', action: 'registration' %>
 			<% end %>
+			<%= link_to button_tag(t('registration'), class: "reg_link"), controller: 'user', action: 'registration' %>
+			
 			<div class="sep_bottom"></div>
 	</div>

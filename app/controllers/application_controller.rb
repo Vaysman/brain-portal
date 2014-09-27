@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :set_locale
-	before_action :set_group, except:  [:login, :token]
+	before_action :set_group, except:  [:login, :registration, :token]
 	before_action :check_online
 	def set_locale
 	  I18n.locale = :ru || I18n.default_locale
