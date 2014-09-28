@@ -19,9 +19,10 @@
 				</b>
 				<%= password_field_tag(:password, '', :class => "canvas") %>
 			</p>
-			<p class = "remember_pass">
-			<%= check_box_tag(:remember) %>
-			<b><%= label_tag(:remember, t('remember')) %></b>
+			<p class="remember_pass">
+			<%= check_box_tag(:remember, 1, false, class: 'checkbox') %>
+			<%= label_tag(:remember, t('remember')) %>
+
 			</p>
 			<%= submit_tag(t('login_submit'),  class: "enter_link") %>
 			<% end %>

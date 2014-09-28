@@ -37,5 +37,5 @@
 	<%= f.label(:correct_answer, t('correct_answer')) %>
 	<%= f.select(:correct_answer, [['А', 'a'], ['Б', 'b'], ['В', 'c'], ['Г', 'd']], :include_blank => t('choose_option')) %>
 	</p>
-	<%= f.submit(t('save_button'))%>
+	<%= f.submit(t('save_button'), class: 'go_back_prof')%>
 <% end %>

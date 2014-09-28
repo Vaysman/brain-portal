@@ -1,10 +1,11 @@
 <h1><%= t('category_edit')+' "'+@category.title+'"'%></h1>
 <%= render 'form_categories' %>
-<hr>
-<%= link_to(button_tag(t('_create')), add_question_path)%>
+<hr style = "margin-top:40px;">
+<h3><%= t('question_for')%></h3>
+
 <% if (@category.question) %>
 	<div class="tables">
-	<h3><%= t('question_for')%></h3>
+	
 	<table class="bordered">
 	<tr>
 		<th><%= t('_id')%></th><th><%= t('question')%></th><th><%= t('_image')%></th><th><%= t('correct_answer')%>
@@ -19,4 +20,6 @@
 	</div>
 <% end %>
 <%= will_paginate @question %>
-<%= link_to t('back'), :back %>
+<%= link_to(button_tag(t('_create'), class: 'go_back_prof'), add_question_path)%>
+<%= link_to t('back'), :back, class: 'go_back_prof' %>
+
