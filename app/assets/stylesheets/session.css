@@ -3,33 +3,28 @@
 	padding: 0;
 	outline: none;
 }
-body{
+.log_reg{
 	background: #EAEAEA;
 	font: 18px Arial, Tahoma, sans-serif;
 }
-h1{
+	
+
+.application .log_reg h1{
 	text-align: center;
 	margin:0 10px;
 	color: #34659e;
 	margin-bottom: 20px;
+	font-size: 35px;
 }
 
-a{
+.application .log_reg a{
 	text-decoration: none;
 	color: #000;
 	display: block;
 }
-input{
-	float: right;
-	height: 31px;
-	width: 200px;
-	margin-right: 90px;
-	border: none;
-	box-shadow: inset 0px 1px 3px rgba(0,0,0,.1);
-	background: #f0f0f0;
-	border-radius: 3px;
-	
-}
+
+
+
 #page_align{
 	width: 450px;
 	height: 350px;
@@ -88,13 +83,14 @@ input{
 	text-align: center;
 	line-height: 30px;
 	font-size: 17px;
+	
 }
 .reg_link:hover{
 	display: block;
 	background: #cbe7a2;
 	font-size: 20px;
 }
-button{
+.application .log_reg button{
 	outline: none;
 	border: none;
 }
@@ -109,7 +105,10 @@ button{
 	background: #9edb46;
 	text-align: center;
 	line-height: 30px;
-	font-size: 17px;
+	font-size: 17px;float: right;
+	margin-right: 90px;
+	border: none;
+
 }
 .enter_link:hover{
 	display: block;
@@ -123,28 +122,13 @@ button{
 	border: 2px solid #9edb46
 }
 
-*{
+	*{
 	margin: 0;
 	padding: 0;
 	outline: none;
 }
-body{
-	background: #EAEAEA;
-	font: 18px Arial, Tahoma, sans-serif;
-}
-h1{
-	text-align: center;
-	margin:0 10px;
-	color: #34659e;
-	margin-bottom: 20px;
-	font-size: 29px;
-}
 
-a{
-	text-decoration: none;
-	color: #000;
-	display: block;
-}
+
 #page_align{
 	width: 450px;
 	height: 320px;
@@ -222,4 +206,58 @@ a{
 	color: #34659e;
 	font-size: 20px;
 
+}
+
+.checkbox {
+	vertical-align: top;
+	margin: 0 3px 0 0;
+	width: 17px;
+	height: 17px;
+}
+
+.checkbox + label {
+	cursor: pointer;
+}
+
+.checkbox:not(checked) {
+	position: absolute;
+	opacity: 0;
+}
+
+.checkbox:not(checked) + label {
+	position: relative; 
+	padding: 0 0 0 90px;
+}
+/* виклчений стан */
+.checkbox:not(checked) + label:before {
+	content: '';
+	position: absolute;
+	top: -4px;
+	left: 0;
+	width: 50px;
+	height: 26px;
+	border-radius: 13px;
+	background: #f0f0f0;
+	box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+}
+/* виключений (переключатель). */
+.checkbox:not(checked) + label:after {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: 2px;
+	width: 22px;
+	height: 22px;
+	border-radius: 10px;
+	background: #FFF;
+	box-shadow: 0 2px 5px rgba(0,0,0,.3);
+	transition: all .4s; /* анимация, чтобы чекбокс переключался плавно */
+}
+/*  фон чекбокса, коли він виключений */
+.checkbox:checked + label:before {
+	background: #9edb46;
+}
+
+.checkbox:checked + label:after {
+	left: 26px;
 }
