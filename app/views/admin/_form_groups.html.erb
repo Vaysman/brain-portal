@@ -14,8 +14,8 @@
 	<%= f.text_field :title %>
 	</p>
   <p>
+  <%= f.check_box(:is_default, class: 'raw') %>
   <%= f.label(:is_default, t('group_is_default')) %>
-  <%= f.check_box :is_default %>
   </p>
   <p>
     <% if !@group.new_record?%>
@@ -34,8 +34,8 @@
                   <% else @flag = false %>
               <% end %>
               <% end %>
-                <td><%= check_box_tag 'actions['+key.to_s+']['+keyt.to_s+']', 1, @flag ? true : false %>
-                <%= label_tag (tit[:title])%></td>
+                <td><%= check_box_tag 'actions['+key.to_s+']['+keyt.to_s+']', 1, @flag ? true : false, class: 'raw' %>
+                <label for=<%='actions_'+key.to_s+'_'+keyt.to_s+''%> style = "width:120px"><%=tit[:title]%></label></td>
                 <% end %>
             <% end %>
           <% end %>

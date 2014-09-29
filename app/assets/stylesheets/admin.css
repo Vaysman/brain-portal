@@ -211,22 +211,7 @@
 
 }
 
-.pages_actions {
-	margin-bottom: 30px;
-	min-width: 23px;
-	max-width: 200px;
-    border: solid #ccc 1px;
-    border-radius: 5px;
-    box-shadow: 0 1px 1px #ccc;  
-    margin-top: 0px;   
-    margin-left: 0px;  
-}
-.pages_actions tr{
-    width:50px; 
-}
-.pages_actions th, td{
-    width:50px; 
-}
+
 .bordered {
     border: solid #ccc 1px;
     border-radius: 5px;
@@ -485,4 +470,31 @@ body{
 	margin-bottom: 20px;
 }
 
+.raw[type="checkbox"] {
+position: absolute ! important;
+left: -9999px;
+}
 
+.raw[type="checkbox"] + label {
+background: url('checkbox.png') 0 0 no-repeat;
+display: block;
+padding-left: 22px;
+}
+
+.raw[type="checkbox"]:checked + label {
+background-position: 0 -40px;
+}
+
+.pages_actions {
+	margin-left: 50px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	width: 650px;
+}
+.pages_actions td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+   
+}
