@@ -36,33 +36,35 @@ width: 240px;
 	padding: 0;
 	outline: none;
 }
-body{
+.log_reg{
 	background: #EAEAEA;
 	font: 18px Arial, Tahoma, sans-serif;
 }
-h1{
+.application h1 {
+	font-size: 29px;
+	text-align: left;
+}
+.application a {
+	text-decoration: none;
+	color: #ccc;
+	display: block;
+}
+.application .log_reg h1{
 	text-align: center;
 	margin:0 10px;
 	color: #34659e;
 	margin-bottom: 20px;
+	font-size: 35px;
 }
 
-a{
+.application .log_reg a{
 	text-decoration: none;
 	color: #000;
 	display: block;
 }
-input{
-	float: right;
-	height: 31px;
-	width: 200px;
-	margin-right: 90px;
-	border: none;
-	box-shadow: inset 0px 1px 3px rgba(0,0,0,.1);
-	background: #f0f0f0;
-	border-radius: 3px;
-	
-}
+
+
+
 #page_align{
 	width: 450px;
 	height: 350px;
@@ -121,13 +123,14 @@ input{
 	text-align: center;
 	line-height: 30px;
 	font-size: 17px;
+	
 }
 .reg_link:hover{
 	display: block;
 	background: #cbe7a2;
 	font-size: 20px;
 }
-button{
+.application .log_reg button{
 	outline: none;
 	border: none;
 }
@@ -142,7 +145,10 @@ button{
 	background: #9edb46;
 	text-align: center;
 	line-height: 30px;
-	font-size: 17px;
+	font-size: 17px;float: right;
+	margin-right: 90px;
+	border: none;
+
 }
 .enter_link:hover{
 	display: block;
@@ -156,28 +162,13 @@ button{
 	border: 2px solid #9edb46
 }
 
-*{
+	*{
 	margin: 0;
 	padding: 0;
 	outline: none;
 }
-body{
-	background: #EAEAEA;
-	font: 18px Arial, Tahoma, sans-serif;
-}
-h1{
-	text-align: center;
-	margin:0 10px;
-	color: #34659e;
-	margin-bottom: 20px;
-	font-size: 29px;
-}
 
-a{
-	text-decoration: none;
-	color: #000;
-	display: block;
-}
+
 #page_align{
 	width: 450px;
 	height: 320px;
@@ -311,3 +302,4 @@ a{
 .checkbox:checked + label:after {
 	left: 26px;
 }
+
