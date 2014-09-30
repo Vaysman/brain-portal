@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+
 #require "net/http"
 
 # Require the gems listed in Gemfile, including any gems
@@ -9,6 +10,8 @@ Bundler.require(*Rails.groups)
 
 module BrainPortal
   class Application < Rails::Application
+     config.time_zone = "Kyiv"
+     config.active_record.default_timezone = "Kyiv"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

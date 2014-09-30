@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	
 	before_action :set_locale
 	before_action :set_group, except:  [:login, :registration, :token]
 	before_action :check_online
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
 	    end
 	    @check_online = CheckOnline.new
 	    @check_online.user_id = @user_info.id
-	    @check_online.time = Time.now
+	    @check_online.time = Time.zone.now
 	    @check_online.save
 	  end 	
 	end
