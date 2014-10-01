@@ -50,6 +50,6 @@
   <%= f.label(:about, t('about')) %>
   <%= f.text_area(:about, :size => '80x10', :style =>'resize:none;') %>
 </p>
-<%= f.submit(t('save_button'))%>
+<%= f.submit(t('save_button'), class: 'go_back_prof')%>
 <% end %>
-<%= link_to t('back'), :back %>
+<%= link_to t('back'), :back, class: 'go_back_prof' %>

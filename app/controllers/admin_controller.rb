@@ -46,9 +46,7 @@ class AdminController < ApplicationController
 				if @group.nil?
 					redirect_to url_for(:controller => :admin, :action => :groups_index)
 				else
-					if (!params[:group])
-						render 'groups_edit'
-					else
+					if (params[:group])
 						is_default = params[:group][:is_default].to_i
 						new_title = params[:group][:title]
 						@group.make_new_default(is_default, new_title)

@@ -1,0 +1,32 @@
+	<div class = "log_reg"> <div id="page_align"> 
+			<div class="sep_top"></div>
+			<div class="sep_top1"></div>
+			<h1><%= t('login')%></h1>
+
+			<% flash.each do |key, value| %>
+			    <div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
+			
+			<%= form_tag({controller: "session", action: "login"}, method: "post", class: "nifty_form") do %>
+
+			<p class="login_n"><b>
+				<%= label_tag(:username, t('username')) %>
+				</b>
+				<%= text_field_tag(:username, '', :class => "canvas") %>
+			</p>
+			<p class="login_n"><b>
+				<%= label_tag(:passsword, t('pw')) %>
+				</b>
+				<%= password_field_tag(:password, '', :class => "canvas") %>
+			</p>
+			<p class="remember_pass">
+			<%= check_box_tag(:remember, 1, false, class: 'checkbox') %>
+			<%= label_tag(:remember, t('remember')) %>
+
+			</p>
+			<%= submit_tag(t('login_submit'),  class: "enter_link") %>
+			<% end %>
+			<%= link_to button_tag(t('registration'), class: "reg_link"), controller: 'user', action: 'registration' %>
+			
+			<div class="sep_bottom"></div></div>	
+	</div>

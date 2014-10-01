@@ -1,5 +1,8 @@
 <div class="tables">
 <h1><%= t('category_index')%></h1>
+<p>
+<%= link_to(button_tag(t('_create'), :class => 'go_back_prof_table'), controller: :admin, action: :categories_create) %>
+  </p>
 <table class="bordered">
   <tr>
     <th><%= t('_id')%></th>
@@ -18,9 +21,7 @@
 </tr>
 <% end %>
 </table>
-<p>
-<%= link_to(button_tag(t('_create'), :class => 'button'), controller: :admin, action: :categories_create) %>
-  </p>
+
 </div>
 <%= will_paginate @categories %>
 <!--<div id="demo-form" class="demo-description" style="display: none;width:500px">

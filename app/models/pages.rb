@@ -22,7 +22,7 @@ class Pages < ActiveRecord::Base
 			 ],
 			 4 => [
 			    :id => '4',
-			    :title => I18n.t('single_game'),
+			    :title => I18n.t('game_single_game'),
 			    :alias => 'game.single',
 			    :actions => [1, 5]
 			 ],
