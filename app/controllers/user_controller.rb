@@ -45,6 +45,9 @@ class UserController < ApplicationController
 		end
 		@user = User.find_by(id: @user_info.id)
 		@user_last_move = @user.check_online
+		if (@user_last_move.nil?)
+			@user_last_move = Time.now
+		end
 		if (Time.now - @user_last_move < 15*60)
 			@status = true
 		else @status = false
