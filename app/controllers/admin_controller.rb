@@ -1,10 +1,7 @@
 class AdminController < ApplicationController	
 
 	def index
-		username = cookies[:auth_login]
-		user_info = User.find_by username: username
-		Access.is('settings.groups.delete', user_info.group_id)
-			
+		redirect_to url_for(:controller => :admin, :action => :groups_index)
 	end
 
 	###################################GROUPS#####################################
@@ -78,7 +75,7 @@ class AdminController < ApplicationController
 		if (Access.is('settings.groups.index', @user_info.group_id))
 			@groups = Group.all.paginate(page: params[:page], per_page: 10)
 		else
-			redirect_to root_path
+			redirect_to root_path 
 		end
 		
 	end

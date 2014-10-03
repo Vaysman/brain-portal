@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 	
 	before_action :set_locale
 	before_action :set_group, except:  [:login, :registration, :token]
-	before_action :check_online
+	before_action :check_online, except: [:login, :registration, :token, :logout, :delete_old_requests]
 	def set_locale
 	  I18n.locale = :ru || I18n.default_locale
 	end
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def check_online
+	  return if self.controller_name == 'Cron'
 	  @username = cookies[:auth_login]
 	  if !@username.nil?
 	    @user_info ||= User.find_by username: @username

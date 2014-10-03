@@ -8,6 +8,7 @@ class UserController < ApplicationController
 			@user.group_id = @def_group.id
 			if @user.save
 				UserMailer.registration_email(@user).deliver
+				flash[:notice] = I18n.t('activation_token_email_sended')
 				redirect_to url_for(:controller => :session, :action => :login)
 			else
 				render 'registration'

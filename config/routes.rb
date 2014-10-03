@@ -59,6 +59,10 @@ Rails.application.routes.draw do
   ##########################################
 
 
+  ############################CRONS#########
+  get '/cron/deleterequests' => 'cron#delete_old_requests'
+  ##########################################
+
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
