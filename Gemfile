@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "rails_12factor", group: :production
 
 gem 'cancan'
 gem 'rails', '4.1.4'
@@ -50,5 +51,6 @@ gem 'jquery-modal-rails'
 gem 'debugger'
 gem 'faye'
 gem 'whenever'
+gem 'heroku'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

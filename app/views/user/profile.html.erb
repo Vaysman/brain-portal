@@ -5,7 +5,7 @@
 	<% if (!@user.avatar_file_name.nil?)%>
 		<%= image_tag(@user.avatar.url, :size => '214x214')%>
 	<% else %>
-		<%= image_tag('/assets/no_avatar.png', :size => '214x214')%>
+		<%= image_tag("no_avatar.png", :size => '214x214')%>
 	<% end %>
 	<br>
 	<% if (@status)%>
