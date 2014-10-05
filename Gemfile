@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.1.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails_12factor", group: :production
@@ -38,7 +39,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'validates_email_format_of'
-gem 'execjs'
+# gem 'execjs'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
@@ -48,9 +49,9 @@ gem 'will_paginate'
 gem 'paperclip'
 gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
-gem 'debugger'
+# gem 'debugger'
 gem 'faye'
 gem 'whenever'
-gem 'heroku'
+# gem 'heroku'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
